@@ -1,6 +1,7 @@
 # Where2Brazil 🌎
 
 A personalized travel recommendation app that helps users discover the perfect destinations in Brazil through an intelligent quiz-based interface.
+Try here!: https://where2-brazil-cdnz8bxbi-augustos-projects-ca6d94ba.vercel.app/
 
 https://github.com/user-attachments/assets/90ba7e6f-f9e1-41a3-bdad-168ad1c06224
 
