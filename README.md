@@ -2,6 +2,9 @@
 
 A personalized travel recommendation app that helps users discover the perfect destinations in Brazil through an intelligent quiz-based interface.
 
+https://github.com/user-attachments/assets/90ba7e6f-f9e1-41a3-bdad-168ad1c06224
+
+
 ## Overview
 
 Where2Brazil is a modern React application that combines user preferences with AI-powered recommendations to suggest ideal Brazilian travel destinations. The app features an interactive quiz system that collects user preferences and generates personalized travel suggestions using Google's Generative AI.
