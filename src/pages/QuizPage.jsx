@@ -40,7 +40,7 @@ export default function QuizPage(props) {
 
   return (
     <section className="quiz-page">
-        <img src="/public/logo.png" alt="Where2Brazil Logo" className="logo" />
+        <img src="/logo.png" alt="Where2Brazil Logo" className="logo" />
         <h2>{question.question}</h2>
         <form className="question-form" action={handleForm}>
             {question.options.map((option) => (
