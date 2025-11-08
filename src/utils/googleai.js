@@ -3,10 +3,11 @@ import { FALLBACK_DESTINATIONS } from '../constants/index.js';
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GOOGLE_AI_API_KEY);
 
+
 export async function createChatCompletion(messages) {
   try {
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash-lite",
       generationConfig: {
         temperature: 0.7,
         maxOutputTokens: 1000,
@@ -14,7 +15,6 @@ export async function createChatCompletion(messages) {
       }
     });
 
-    // Use Gemini chat format directly
     const chat = model.startChat({
       history: messages.slice(0, -1)
     });
@@ -33,10 +33,8 @@ export async function createChatCompletion(messages) {
 
 export function formatTravelRecommendations(jsonText) {
   try {
-    // Clean the response in case it has markdown formatting or extra text
     let cleanedJson = jsonText.trim();
 
-    // Remove potential markdown code blocks
     if (cleanedJson.startsWith('```json')) {
       cleanedJson = cleanedJson.replace(/```json\s*/, '').replace(/\s*```$/, '');
     } else if (cleanedJson.startsWith('```')) {
@@ -45,7 +43,6 @@ export function formatTravelRecommendations(jsonText) {
 
     const data = JSON.parse(cleanedJson);
 
-    // Validate the structure
     if (!data || !data.destinations || !Array.isArray(data.destinations)) {
       throw new Error('Invalid JSON structure: missing destinations array');
     }
@@ -54,7 +51,6 @@ export function formatTravelRecommendations(jsonText) {
       throw new Error('No destinations found in response');
     }
 
-    // Validate each destination
     const validatedDestinations = data.destinations.map((dest, index) => {
       if (!dest.title || !dest.description) {
         throw new Error(`Destination ${index + 1} missing required fields`);
@@ -72,7 +68,6 @@ export function formatTravelRecommendations(jsonText) {
     console.error('JSON parsing/validation error:', error);
     console.error('Raw response:', jsonText);
 
-    // Return fallback recommendations
     return FALLBACK_DESTINATIONS;
   }
 }
